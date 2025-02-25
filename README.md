@@ -1,2 +1,3 @@
-# ParallelComputing
-This is the repository to upload the labs in a structured way.
+# Lab_2
+Build a first program using threads in Python.
+Build a first program using processes in Python
