@@ -1,3 +1,3 @@
-# Lab_2
-Build a first program using threads in Python.
-Build a first program using processes in Python
+# Lab3_P2
+Build a parallel program to enhance the training of a machine learning model.
+Learn when to use thread and processor.
