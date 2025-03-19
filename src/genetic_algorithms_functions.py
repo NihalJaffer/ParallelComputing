@@ -14,20 +14,17 @@ def calculate_fitness(route, distance_matrix):
            Returns a large negative penalty if the route is infeasible.
     """
     total_distance = 0
-    
-    # Iterate through the route and calculate the total distance
     for i in range(len(route) - 1):
-        node1 = route[i]
-        node2 = route[i + 1]
+        node1, node2 = route[i], route[i + 1]
         distance = distance_matrix[node1, node2]
-        
-        # If the distance is 100000 (infeasible route), return a large penalty
-        if distance == 100000:
-            return -1000000  # Large penalty for infeasible route
-        
+        if distance == 10000:  # Infeasible route
+            return -1e6  # Large negative penalty
         total_distance += distance
-
-    return -total_distance  # Negative because we aim to minimize the distance
+    
+    # Include the return to the depot (node 0)
+    total_distance += distance_matrix[route[-1], route[0]]
+    
+    return -total_distance  # Negative because we minimize
 
 
 def select_in_tournament(population, scores, number_tournaments=4, tournament_size=3):
@@ -37,27 +34,17 @@ def select_in_tournament(population, scores, number_tournaments=4, tournament_si
     Parameters:
         - population (list): The current population of routes.
         - scores (np.array): The calculate_fitness scores corresponding to each individual in the population.
-        - number_tournaments (int): The number of the tournaments to run in the population.
-        - tournament_size (int): The number of individual to compete in the tournaments.
+        - number_tournaments (int): The number of tournaments to run in the population.
+        - tournament_size (int): The number of individuals to compete in the tournaments.
 
     Returns:
         - list: A list of selected individuals for crossover.
     """
     selected = []
-    
-    # Run the specified number of tournaments
     for _ in range(number_tournaments):
-        # Randomly select 'tournament_size' individuals
-        tournament_idx = np.random.choice(len(population), tournament_size, replace=False)
-        tournament_individuals = [population[idx] for idx in tournament_idx]
-        tournament_scores = [scores[idx] for idx in tournament_idx]
-
-        # Find the individual with the highest fitness (highest score)
-        best_idx = np.argmax(tournament_scores)
-        best_individual = tournament_individuals[best_idx]
-
-        # Append the best individual to the selected list
-        selected.append(best_individual)
+        idx = np.random.choice(len(population), tournament_size, replace=False)
+        best_idx = idx[np.argmax(scores[idx])]
+        selected.append(population[best_idx])
     
     return selected
 
@@ -86,7 +73,8 @@ def order_crossover(parent1, parent2):
     return offspring
 
 
-def mutate(route, mutation_rate=0.1):
+def mutate(route,
+           mutation_rate = 0.1):
     """
     Mutation operator: swap two nodes in the route.
 
@@ -100,7 +88,6 @@ def mutate(route, mutation_rate=0.1):
         i, j = np.random.choice(len(route), 2, replace=False)
         route[i], route[j] = route[j], route[i]
     return route
-
 
 def generate_unique_population(population_size, num_nodes):
     """
