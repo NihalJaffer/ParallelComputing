@@ -1,12 +1,17 @@
 import numpy as np
 import pandas as pd
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+script_dir = os.path.dirname(__file__)
+csv_path = os.path.join(script_dir, '../data/city_distances.csv')
 from genetic_algorithms_functions import calculate_fitness, \
     select_in_tournament, order_crossover, mutate, \
     generate_unique_population
 
 
 # Load the distance matrix
-distance_matrix = pd.read_csv('city_distances.csv').to_numpy()
+distance_matrix = pd.read_csv(csv_path).to_numpy()
 
 # Parameters
 num_nodes = distance_matrix.shape[0]
