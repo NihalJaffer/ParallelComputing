@@ -1,10 +1,7 @@
 import numpy as np
 import pandas as pd
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-script_dir = os.path.dirname(__file__)
-csv_path = os.path.join(script_dir, '../data/city_distances.csv')
+
+
 from genetic_algorithms_functions import calculate_fitness, \
     select_in_tournament, order_crossover, mutate, \
     generate_unique_population
