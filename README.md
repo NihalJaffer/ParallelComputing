@@ -1,27 +1,35 @@
-# Lab3_P1
-* Build a data parallel model program using threads in Python.
-• Build a data parallel model program using processes in Python.
-• Understand the basics of parallel programming using Python's threading and multiprocessing modules.
+# Assignment1-Part1/2
+• Develop Python programs that take advantage of python multiprocessing capabilities.
+
 
 # Questions answered
-1.*Sequential Execution: The entire summation is performed in a single loop, which takes a significant amount of time.
-  *Threaded Execution: Since Python has the Global Interpreter Lock (GIL), threading does not improve CPU-bound tasks like summation significantly. It may show       some improvements due to parallel memory access but is generally not much faster.
-  *Multiprocessing Execution: This method creates separate processes, bypassing the GIL, and enables true parallel execution on multi-core CPUs. This usually         results in a significant speedup compared to sequential and threaded execution.
 
-2.Sequential Execution Time:0.00211 sec
+# Conclusions from performance test.
 
-  Thread Execution Time:0.00675 sec
-  Speedup: 0.313
-  Efficiency: 0.078
-  Amdahl's Law Speedup: 3.88
-  Gustafson's Law Speedup: 3.96
+For **10^6**:
+• Sequential processing was the fastest at 0.0589 seconds because it avoids multiprocessing overhead.
+• Multiprocessing using Pool.map took 0.1272 seconds, showing an improvement but still with some overhead.
+• Concurrent Futures (ProcessPoolExecutor) was extremely slow at 100.1509 seconds, likely due to inefficient task distribution.
 
-  Multiprocess Excecution Time:Execution Time: 0.41368 sec
-  Speedup: 0.0051
-  Efficiency: 0.0013
-  Amdahl's Law Speedup: 3.88
-  Gustafson's Law Speedup: 3.96
+For **10^7**:
 
- Sequential execution was the fastest because Python's built-in sum() function is highly optimized.
-Threading did not provide significant speedup due to the Global Interpreter Lock (GIL).
-Multiprocessing was significantly slower due to the overhead of creating processes and inter-process communication (IPC). For such a simple operation, the overhead outweighs the benefits.
+• Sequential processing took 0.5422 seconds, which scales reasonably.
+• Multiprocessing (Pool.map) took 0.8270 seconds, slightly slower than expected but still beneficial.
+• Concurrent Futures (ProcessPoolExecutor) was still extremely slow (1013.0337 seconds), indicating a major inefficiency when handling  large lists.
+
+This test confirms that for **10^7** sequential execution scales well.
+Multiprocessing improves performance slightly, but Concurrent Futures remains extremely inefficient.
+The bottleneck in **ProcessPoolExecutor** suggests that  synchronization overhead is excessive.
+
+
+
+## What Happens When More Processes Try to Access the Pool Than Available Connections?
+• In the test, 6 processes tried to acquire connections when only 3 were available.
+• Three processes acquired connections immediately.
+• The remaining three waited until a connection was released, and only then could they proceed.
+
+## How Does the Semaphore Prevent Race Conditions?
+• Semaphores act as a counter, ensuring that only a limited number of processes can access a resource.
+• If no connections are available, new processes must wait until an existing process releases a connection.
+• This prevents simultaneous access to a shared resource, which could cause data corruption or system crashes.
+
