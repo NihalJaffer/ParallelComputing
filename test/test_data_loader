@@ -1,0 +1,14 @@
+from src.data_loader import load_data
+import pandas as pd
+
+def test_load_data():
+    """
+    Unit test for the load_data() function.
+    
+    Verifies that:
+    - The function returns a non-empty pandas DataFrame.
+    """
+    data = load_data()
+    
+    assert isinstance(data, pd.DataFrame), "load_data() should return a pandas DataFrame"
+    assert not data.empty, "DataFrame returned by load_data() should not be empty"
