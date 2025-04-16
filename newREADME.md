@@ -169,10 +169,10 @@ For distributed execution, I implemented an advanced solution using `MPI4Py`, en
 
 Both implementations satisfy the parallelization objectives:
 
-- ✅ **Parallel Execution**: Enabled simultaneous runs of multiple explorers  
-- ✅ **Statistical Collection**: Captured key metrics like total moves, time taken, backtracks, and loop encounters  
-- ✅ **Result Comparison**: Analyzed and identified the top-performing explorer  
-- ✅ **Scalability**: Demonstrated performance benefits on both single and multi-machine setups
+-  **Parallel Execution**: Enabled simultaneous runs of multiple explorers  
+-  **Statistical Collection**: Captured key metrics like total moves, time taken, backtracks, and loop encounters  
+-  **Result Comparison**: Analyzed and identified the top-performing explorer  
+-  **Scalability**: Demonstrated performance benefits on both single and multi-machine setups
 
 **Additional Features:**
 
@@ -238,22 +238,22 @@ This 4–5x discrepancy, despite identical algorithms and input, underscores the
 
 ### Key Observations
 
-#### ✅ Algorithm Consistency
+####  Algorithm Consistency
 
 - The Right-Hand Rule delivers consistent path lengths across all runs.
 - Algorithmic behavior remained stable across multiprocessing and distributed runs.
 
-#### ⚠️ Performance Variability
+####  Performance Variability
 
 - The variation in execution time is not due to the algorithm but to system-level resource contention.
 - This indicates that **microbenchmarks of small tasks** may not benefit significantly from parallelization, especially across distributed nodes.
 
-#### 🚀 Scalability
+####  Scalability
 
 - The **MPI implementation** successfully ran **50 explorers** across two machines in about **0.22 seconds**.
 - This demonstrates the potential for scalable distribution across nodes.
 
-#### 🧪 Speedup Limitations
+####  Speedup Limitations
 
 - A reported speedup factor of **~0.25x** reveals the overhead of distributing small tasks can **outweigh performance gains** for lightweight problems.
 - This suggests that **task granularity** is a key consideration for parallel scalability.
@@ -368,22 +368,22 @@ if self.forward_queue:
 
 #### **A* Search**
 
-✅ Guarantees shortest path  
-✅ Works with any maze layout  
-❌ Higher memory usage  
-❌ Slightly slower execution  
+- Guarantees shortest path  
+- Works with any maze layout  
+- Higher memory usage  
+- Slightly slower execution  
 
 #### **Bidirectional Search**
 
-✅ Fastest execution time  
-✅ Finds optimal or near-optimal paths  
-✅ Great for mazes with known start/end  
-❌ Complex implementation  
-❌ Less effective in highly obstructed mazes  
+- Fastest execution time  
+- Finds optimal or near-optimal paths  
+- Great for mazes with known start/end  
+- Complex implementation  
+- Less effective in highly obstructed mazes  
 
 ---
 
-### ✅ Conclusion
+###  Conclusion
 
 The new algorithms effectively resolve the limitations of the Right-Hand Rule:
 
@@ -404,9 +404,9 @@ These results demonstrate how integrating intelligent algorithms like A* and Bid
 
 To evaluate the effectiveness of the enhanced explorers, I conducted comparative tests on the **static maze** using three different algorithms:
 
-- ✅ Right-Hand Rule (Original)
-- ✅ A* Search
-- ✅ Bidirectional Search
+-  Right-Hand Rule (Original)
+-  A* Search
+-  Bidirectional Search
 
 #### Key Performance Metrics:
 
@@ -418,7 +418,7 @@ To evaluate the effectiveness of the enhanced explorers, I conducted comparative
 
 ---
 
-### 📏 Path Length Analysis
+###  Path Length Analysis
 
 - Both **A*** and **Bidirectional Search** reduced the path length by **90.1%** — from **1,279 moves** to just **127**.
 - This is a **10× improvement** in solution quality.
@@ -426,7 +426,7 @@ To evaluate the effectiveness of the enhanced explorers, I conducted comparative
 
 ---
 
-### ⏱️ Time Efficiency Analysis
+###  Time Efficiency Analysis
 
 - **A*** Search was **~30% slower** than Right-Hand Rule (0.0022s vs 0.0017s).
 - **Bidirectional Search** was **53% faster** than Right-Hand Rule (0.0008s vs 0.0017s).
@@ -434,7 +434,7 @@ To evaluate the effectiveness of the enhanced explorers, I conducted comparative
 
 ---
 
-### ⚙️ Processing Rate Analysis
+###  Processing Rate Analysis
 
 | **Metric**               | **Observation**                                                 |
 |--------------------------|-----------------------------------------------------------------|
@@ -446,7 +446,7 @@ Right-Hand Rule’s higher processing speed is misleading due to its **inefficie
 
 ---
 
-### 2. 📊 Visualization of Improvements
+### 2.  Visualization of Improvements
 
 Visual comparisons were created (not shown here) to highlight:
 
@@ -458,19 +458,19 @@ Visual comparisons were created (not shown here) to highlight:
 
 ### 3. Algorithm-Specific Analysis
 
-#### 🔁 Right-Hand Rule
+####  Right-Hand Rule
 
 - **Pros**: Simple to implement; always finds an exit  
 - **Cons**: Extremely inefficient; produces paths ~10× longer  
 - **Performance**: Fast, but wastes time and resources on unnecessary moves
 
-#### 🔍 A* Search
+####  A* Search
 
 - **Pros**: Guarantees shortest path; adapts to any maze  
 - **Cons**: Slight computational overhead  
 - **Performance**: Small time penalty (~30%) but **vastly superior path quality**
 
-#### 🔀 Bidirectional Search
+####  Bidirectional Search
 
 - **Pros**: Fastest execution; finds optimal or near-optimal paths  
 - **Cons**: More complex implementation  
@@ -480,37 +480,37 @@ Visual comparisons were created (not shown here) to highlight:
 
 ### 4. Trade-offs and Limitations
 
-#### 📌 A* Search
+####  A* Search
 
 **Pros:**
 
-- ✅ Guaranteed shortest path
-- ✅ Effective on any maze
-- ✅ Adaptive exploration
+-  Guaranteed shortest path
+-  Effective on any maze
+-  Adaptive exploration
 
 **Cons:**
 
-- ❌ Higher memory usage (open/closed sets, heuristics)
-- ❌ Slight increase in execution time
+-  Higher memory usage (open/closed sets, heuristics)
+-  Slight increase in execution time
 
 ---
 
-#### 📌 Bidirectional Search
+####  Bidirectional Search
 
 **Pros:**
 
-- ✅ Fastest execution among all tested algorithms
-- ✅ Efficient scaling for large mazes
-- ✅ Optimal or near-optimal pathfinding
+-  Fastest execution among all tested algorithms
+-  Efficient scaling for large mazes
+-  Optimal or near-optimal pathfinding
 
 **Cons:**
 
-- ❌ More complex logic and structure
-- ❌ Less effective when many obstacles lie between start and goal
+-  More complex logic and structure
+-  Less effective when many obstacles lie between start and goal
 
 ---
 
-#### 📌 General Trade-offs of Enhanced Algorithms
+####  General Trade-offs of Enhanced Algorithms
 
 | **Aspect**              | **Right-Hand Rule**     | **A* Search**            | **Bidirectional Search**     |
 |-------------------------|--------------------------|----------------------------|-------------------------------|
@@ -522,13 +522,13 @@ Visual comparisons were created (not shown here) to highlight:
 
 ---
 
-### 5. ✅ Conclusion
+### 5.  Conclusion
 
 The enhanced explorers **vastly outperformed** the original algorithm:
 
-- 🔥 **Path Quality**: 90% path reduction with both A* and Bidirectional Search  
-- 🚀 **Time Efficiency**: Bidirectional was faster than the original while finding a better path  
-- ⚖️ **Overall Efficiency**: Bidirectional Search is the **clear winner**—optimal path with fastest execution
+-  **Path Quality**: 90% path reduction with both A* and Bidirectional Search  
+-  **Time Efficiency**: Bidirectional was faster than the original while finding a better path  
+-  **Overall Efficiency**: Bidirectional Search is the **clear winner**—optimal path with fastest execution
 
 Though the enhanced algorithms require more memory and complexity, the **benefits far outweigh the trade-offs**. For practical applications where path quality and efficiency matter, the enhanced strategies — especially **Bidirectional Search** — are clearly superior.
 
