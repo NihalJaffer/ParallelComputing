@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "timestamp": "20250416_061427",
+    "num_explorers": 10,
+    "maze_type": "static"
+  },
+  "results": [
+    {
+      "seed": 9115,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.005131721496582031,
+      "moves_per_second": 249234.10221148486
+    },
+    {
+      "seed": 9124,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.004135608673095703,
+      "moves_per_second": 309265.2378646374
+    },
+    {
+      "seed": 8710,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.004251241683959961,
+      "moves_per_second": 300853.2788963042
+    },
+    {
+      "seed": 3699,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.008675813674926758,
+      "moves_per_second": 147421.33106158455
+    },
+    {
+      "seed": 7069,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.004749298095703125,
+      "moves_per_second": 269302.9526104418
+    },
+    {
+      "seed": 8178,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.0014591217041015625,
+      "moves_per_second": 876554.708496732
+    },
+    {
+      "seed": 9363,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.0016236305236816406,
+      "moves_per_second": 787740.795301028
+    },
+    {
+      "seed": 4007,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.0013573169708251953,
+      "moves_per_second": 942300.1608993501
+    },
+    {
+      "seed": 6098,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.0016436576843261719,
+      "moves_per_second": 778142.561067595
+    },
+    {
+      "seed": 8918,
+      "maze_type": "static",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.0015947818756103516,
+      "moves_per_second": 801990.5540439527
+    }
+  ],
+  "best_explorer": {
+    "seed": 9115,
+    "maze_type": "static",
+    "moves": 1279,
+    "backtracks": 0,
+    "elapsed_time": 0.005131721496582031,
+    "moves_per_second": 249234.10221148486
+  },
+  "aggregate_stats": {
+    "avg_moves": 1279.0,
+    "min_moves": 1279,
+    "max_moves": 1279
+  }
+}

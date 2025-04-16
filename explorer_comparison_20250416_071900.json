@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "timestamp": "20250416_071900",
+    "maze_type": "static",
+    "width": 30,
+    "height": 30
+  },
+  "results": {
+    "Right-Hand Rule": {
+      "algorithm": "Right-Hand Rule",
+      "moves": 1279,
+      "backtracks": 0,
+      "elapsed_time": 0.0016896724700927734,
+      "moves_per_second": 756951.4344574573
+    },
+    "A* Search": {
+      "algorithm": "A* Search",
+      "moves": 127,
+      "backtracks": 0,
+      "elapsed_time": 0.0022313594818115234,
+      "moves_per_second": 56915.97478363073
+    },
+    "Bidirectional": {
+      "algorithm": "Bidirectional",
+      "moves": 127,
+      "backtracks": 0,
+      "elapsed_time": 0.0007810592651367188,
+      "moves_per_second": 162599.6971916972
+    }
+  }
+}
